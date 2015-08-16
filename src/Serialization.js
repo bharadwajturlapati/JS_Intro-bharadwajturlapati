@@ -35,17 +35,27 @@ exports.ParseStringOfNumbers = function(str){
 }
 
 exports.ConvertArrayOfNumbersToString = function(obj){
-	return (obj instanceof Array) ? "" : obj.toString()
+	return (obj instanceof Array) ? obj.toString() : ""
 
 }
 
 
 exports.ConvertStringToObject = function(str){
-	return (typeof str != "string" || !str) ?null:JSON.parse(str);
+	if(typeof str != "string" || !str){
+		return null;
+	}
+
+	try
+	{
+		return JSON.parse(str);	
+	}
+	catch(e){
+		return null;
+	}
 }
 
 exports.ConvertObjectToString = function(obj){
-	return (obj == null) ? "" : JSON/stringify(obj) 
+	return (obj == null) ? "" : JSON.stringify(obj) 
 
 }
 
